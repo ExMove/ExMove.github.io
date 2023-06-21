@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "ExMove.github.io",
+    "title": "ExMove: An open-source toolkit for processing and exploring animal tracking data in R",
     "section": "",
-    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Welcome to the home page of ExMove, where you can find the resources to accompany our animal tracking data toolkit."
   },
   {
     "objectID": "about.html",

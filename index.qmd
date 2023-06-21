@@ -1,11 +1,9 @@
 ---
-title: "ExMove.github.io"
+title: "ExMove: An open-source toolkit for processing and exploring animal tracking data in R"
+subtitle: Liam  Langley, Stephen Lang, Luke Ozsanlav-Harris, & Alice Trevail
+image: images/ExMove_hex_sticker.png
+about:
+  template: trestles
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+Welcome to the home page of ExMove, where you can find the resources to accompany our animal tracking data toolkit.

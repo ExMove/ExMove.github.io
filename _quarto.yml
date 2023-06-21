@@ -12,9 +12,10 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: custom.scss
     css: styles.css
     toc: true
+    mainfont: Outfit
 
 editor: visual
 
