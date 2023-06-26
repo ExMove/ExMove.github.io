@@ -3,12 +3,14 @@ project:
   output-dir: docs
 
 website:
-  title: "ExMove.github.io"
+  title: "ExMove"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+    right: 
+      - icon: github
+        href: https://github.com/ExMove/ExMove
 
 format:
   html:

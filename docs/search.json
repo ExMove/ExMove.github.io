@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "ExMove: An open-source toolkit for processing and exploring animal tracking data in R",
+    "title": "ExMove",
     "section": "",
-    "text": "Welcome to the home page of ExMove, where you can find the resources to accompany our animal tracking data toolkit."
+    "text": "Welcome to the home page of ExMove. Here, you can find the resources to use our toolkit for processing biologging data from tag downloads to online archive.\n\nSome links:\n\nRead the manuscript, via BioRXiv (currently in review at Journal of Animal Ecology)\nAccess the GitHub repository containing the code and documentation to run the toolkit\n\n \n\n\nHow to cite:\nLangley, L. P., Lang, S., Ozsanlav-Harris, L., & Trevail, A. (2023). ExMove: An open-source toolkit for processing and exploring animal tracking data in r. http://dx.doi.org/10.1101/2023.05.16.540922"
   },
   {
     "objectID": "about.html",

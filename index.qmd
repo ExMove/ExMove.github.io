@@ -1,9 +1,37 @@
 ---
-title: "ExMove: An open-source toolkit for processing and exploring animal tracking data in R"
-subtitle: Liam  Langley, Stephen Lang, Luke Ozsanlav-Harris, & Alice Trevail
-image: images/ExMove_hex_sticker.png
-about:
-  template: trestles
+page-layout: full
+bibliography: references.bib
+suppress-bibliography: true
+csl: apa-cv.csl
+link-citations: false
+citations-hover: false
 ---
 
-Welcome to the home page of ExMove, where you can find the resources to accompany our animal tracking data toolkit.
+::: grid
+::: {.g-col-12 .g-col-md-3}
+![](images/ExMove_hex_sticker.png)
+:::
+
+::: {.g-col-12 .g-col-md-9}
+## ExMove: An open-source toolkit for processing and exploring animal tracking data in R
+
+#### Liam Langley, Stephen Lang, Luke Ozsanlav-Harris, & Alice Trevail
+:::
+:::
+
+ 
+
+Welcome to the home page of ExMove. Here, you can find the resources to use our toolkit for processing biologging data from tag downloads to online archive.
+
+
+
+##### Some links:
+
+-   [Read the manuscript, via BioRXiv](https://www.biorxiv.org/content/10.1101/2023.05.16.540922v1) (currently in review at Journal of Animal Ecology)
+-   [Access the GitHub repository](https://github.com/ExMove/ExMove) containing the code and documentation to run the toolkit
+
+ 
+
+##### How to cite:
+
+[@langley2023]
