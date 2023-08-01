@@ -9,6 +9,7 @@ website:
       - href: index.qmd
         text: Home
       - href: Glossary.qmd
+      - href: FAQs.qmd
     right: 
       - icon: github
         href: https://github.com/ExMove/ExMove
