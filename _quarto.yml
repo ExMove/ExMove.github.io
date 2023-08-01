@@ -9,7 +9,9 @@ website:
       - href: index.qmd
         text: Home
       - href: Glossary.qmd
-      - href: FAQs.qmd
+      - href: FAQ's.qmd
+      - href: User_guide.qmd
+        text: User guide
     right: 
       - icon: github
         href: https://github.com/ExMove/ExMove
