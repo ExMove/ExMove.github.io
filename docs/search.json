@@ -1,56 +1,56 @@
 [
   {
-    "objectID": "FAQ's.html",
-    "href": "FAQ's.html",
+    "objectID": "FAQs.html",
+    "href": "FAQs.html",
     "title": "FAQ’s",
     "section": "",
     "text": "Below is a list of common issues/errors that you might come across when using the workflow we provide. It’s not exhaustive, but hopefully helpful for solving problems that are likely to occur if you are analysing your own data."
   },
   {
-    "objectID": "FAQ's.html#introduction",
-    "href": "FAQ's.html#introduction",
+    "objectID": "FAQs.html#introduction",
+    "href": "FAQs.html#introduction",
     "title": "FAQ’s",
     "section": "",
     "text": "Below is a list of common issues/errors that you might come across when using the workflow we provide. It’s not exhaustive, but hopefully helpful for solving problems that are likely to occur if you are analysing your own data."
   },
   {
-    "objectID": "FAQ's.html#getting-the-workflow-up-and-running",
-    "href": "FAQ's.html#getting-the-workflow-up-and-running",
+    "objectID": "FAQs.html#getting-the-workflow-up-and-running",
+    "href": "FAQs.html#getting-the-workflow-up-and-running",
     "title": "FAQ’s",
     "section": "1 Getting the workflow up and running",
     "text": "1 Getting the workflow up and running\n\n1.1 GitHub issues\nUsing GitHub is not essential for using this workflow — you can download the repo from  &gt; Download Zip, unzip to your machine, and start by opening the .Rproj file.\nHowever, if you want to contribute improvements to the repo, or are just interested in getting to grips with GitHub for your own research projects, there are great resources online for getting started (see: setting up GitHub | cloning a repo | using GitHub with RStudio).\n\n\n1.2 Using RStudio projects and here for reproducible filepaths\nWhen we open a .Rproj file (which should be the starting point for this workflow), this opens up a fresh instance of RStudio, with a dedicated project environment and access to all the folders and files contained inside that project folder. If you’re not familiar with using RStudio projects, have a look at this section of R for Data Science for a quick explained.\nBy combining Rstudio projects with the here package, we can create relative filepaths that work across machines, so you won’t have to edit a complicated filepath to get the code to run (for more info see the ‘Getting started’ section of the here documentation)."
   },
   {
-    "objectID": "FAQ's.html#reporting-in-a-paper",
-    "href": "FAQ's.html#reporting-in-a-paper",
+    "objectID": "FAQs.html#reporting-in-a-paper",
+    "href": "FAQs.html#reporting-in-a-paper",
     "title": "FAQ’s",
     "section": "2 Reporting in a paper",
     "text": "2 Reporting in a paper\n\n2.1 How to report usage of this workflow in a paper\nIf you have used this workflow and you wish to report this in a scientific publication then we provide the text below as a suggestion as to how the user might do so.\n“Animal tracking data in this study was cleaned following the key principles of clean data in Langley et al. (2023). Duplicated and erroneous data points were removed, a maximum speed filter of XXm/s applied and data YYhours after initial deployment removed”"
   },
   {
-    "objectID": "FAQ's.html#data-problems",
-    "href": "FAQ's.html#data-problems",
+    "objectID": "FAQs.html#data-problems",
+    "href": "FAQs.html#data-problems",
     "title": "FAQ’s",
     "section": "3 Data problems",
     "text": "3 Data problems\n\n3.1 What if I have multiple data files for an individual?\nLots of data sets include multiple files for a single individual, when individuals are tracked more than once. The workflow can filter raw tracking data over multiple deployments. For it to work, make sure to check:\n\nThe raw data contain individual ID, read in from the file name\nThe metadata includes one row per unique tag deployment per individual\nThe metadata contains a column with a unique value for each deployment (e.g., DeployID/Year)\nThis identifying column is included in df_metadataslim\n\nWhen joining the raw data and metadata, the raw data will be duplicated for each row of ID in the metadata (i.e., for each DeployID/Year). When we filter the data to the deployment period only (df_clean) the duplicated rows, where tracking DateTimes are outside of the individual’s deployment period, are removed.\nAn example of how to use multiple ID columns in this way is included in the troubleshooting script, named Troubleshoot - multiple ID columns.R.\n\n\n3.2 What if my tags have been re-deployed on multiple individuals?\nSometimes tags are used multiple times on different individuals, but data are downloaded in a single file per tag. It is much better practice to run all processing in R, rather than splitting the files prior to this workflow. With a couple of tweaks, the workflow can filter raw tracking data files containing multiple deployments:\n\nMake sure TagID is included in the file name, instead of individual ID\nWhen reading in the raw data, replace ID with TagID\nMake sure the metadata includes one row per unique tag deployment per individual\nMake sure the metadata file and df_metadataslim contain both ID and TagID\nWhen combining raw and metadata, left_join by TagID, instead of ID:\n\n\ndf_metamerged &lt;- df_raw %&gt;%\n  left_join(., df_metadataslim, by=\"TagID\") \n\nWhen joining the raw data and metadata, the raw data will be duplicated for each row of TagID in the metadata (i.e., for each ID). When we filter the data to the deployment period only (df_clean) the duplicated rows, where tracking DateTimes are outside of the individual’s deployment period, are removed.\nAn example of how to use multiple ID columns in this way is included in the troubleshooting script, named Troubleshoot - multiple ID columns.R."
   },
   {
-    "objectID": "FAQ's.html#geographic-projection-issues",
-    "href": "FAQ's.html#geographic-projection-issues",
+    "objectID": "FAQs.html#geographic-projection-issues",
+    "href": "FAQs.html#geographic-projection-issues",
     "title": "FAQ’s",
     "section": "4 Geographic projection issues",
     "text": "4 Geographic projection issues\n\n4.1 What is a CRS?\nCoordinate Reference Systems (or CRS) are the framework we use to represent locations from a spherical earth on a two-dimensional plot. Usually we want to “project” these 3D points to a 2D plot in different ways, depending on the range and scale of our spatial data, and we use CRS codes to do this easily. Two common ESPG codes we use in our workflow are LatLon (4326) and Spherical mercator/WGS (3857), but you can also use the crssuggest package to automatically determine the appropriate CRS for your data.\nCRS for sf objects are usually defined at creation (e.g. the crs = argument of st_as_sf), but can also be retrieved or replaced with st_crs, and transformed from one projection to another with st_transform.\nMore information on these concepts can be found in the sf documentation (see: The flat earth model | spherical geometry | miscellaneous)\n\n\n4.2 What does this st_intersects warning mean?\n\n\n## although coordinates are longitude/latitude, st_intersects assumes that they are planar\n\n\nMiscellaneous sf questions that could either be addressed here, or just pointed to the sf misc page"
   },
   {
-    "objectID": "FAQ's.html#timezones",
-    "href": "FAQ's.html#timezones",
+    "objectID": "FAQs.html#timezones",
+    "href": "FAQs.html#timezones",
     "title": "FAQ’s",
     "section": "5 Timezones",
     "text": "5 Timezones\n\n5.1 How do I find a list of timezone codes?\nTo find the code for a specific timezone, you can search the full list of tz’s that R supports by using Olsonnames():\n\nhead(OlsonNames())\n\n[1] \"Africa/Abidjan\"     \"Africa/Accra\"       \"Africa/Addis_Ababa\"\n[4] \"Africa/Algiers\"     \"Africa/Asmara\"      \"Africa/Asmera\"     \n\n\n\nLists of supported timezone codes can also be found online (e.g. wikipedia\n\n\n\n5.2 Converting between timezones\nIf you have data from different timezones and you want to convert everything to a common format, you can use with_tz from the lubridate package (example below taken from the function page):\n\nx &lt;- ymd_hms(\"2009-08-07 00:00:01\", tz = \"America/New_York\")\nwith_tz(x, \"GMT\") #converts US DatTime to UK DateTime\n\n[1] \"2009-08-07 04:00:01 GMT\""
   },
   {
-    "objectID": "FAQ's.html#resource-limitations",
-    "href": "FAQ's.html#resource-limitations",
+    "objectID": "FAQs.html#resource-limitations",
+    "href": "FAQs.html#resource-limitations",
     "title": "FAQ’s",
     "section": "6 Resource limitations",
     "text": "6 Resource limitations\n\n6.1 Vector memory exhausted\nWhen you’re working with thousands or even millions of tracking data points, sometimes you might come across the following message:\n\n\nError: vector memory exhausted (limit reached?)\n\n\nThis essentially means you’ve run out of memory (RAM), and R like a big baby is refusing to carry on. While we’d recommend first trying code testing and optimization, an easy brute-force solution is to increase the amount of memory R can access, by allocating some of your disk alongside existing RAM. We can do this by editing the .Renviron file (which R reads when it starts up):\n\nlibrary(usethis) #usethis is a package with a selection of handy functions\nusethis::edit_r_environ() #this function allows us to directly edit the .Renviron file from R Studio\n\nThen add R_MAX_VSIZE=32Gb as a line to the .Renviron file that opens up (32Gb can be changed to whatever you want, but make sure this value includes the amount of RAM on your machine), then save it and restart the R session for changes to take effect. To return to default allocation, run the code a second time and remove the line you added. More detail (and the source of the above solution) can be found on Stackoverflow."

@@ -9,7 +9,7 @@ website:
       - href: index.qmd
         text: Home
       - href: Glossary.qmd
-      - href: FAQ's.qmd
+      - href: FAQs.qmd
       - href: User_guide.qmd
         text: User guide
     right: 

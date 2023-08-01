@@ -11,10 +11,15 @@ download.file(url = "https://github.com/ExMove/ExMove/archive/refs/heads/main.zi
               destfile = here("ExMove.zip"))     
 
 # Unzip FAQ file into website
-unzip(here("ExMove.zip"), files = "ExMove-main/Documentation/FAQ's.qmd", junkpaths = T)
+unzip(here("ExMove.zip"), 
+      files = file.path("ExMove-main","Documentation","FAQ's.qmd"),
+      junkpaths = T)
+file.rename("FAQ's.qmd", "FAQs.qmd")
 
 # Unzip User_guide into website
-unzip(here("ExMove.zip"), files = file.path("ExMove-main/Documentation","User_guide.qmd"), junkpaths = T)
+unzip(here("ExMove.zip"), 
+      files = file.path("ExMove-main","Documentation","User_guide.qmd"), 
+      junkpaths = T)
 
 # Unzip data for user guide into website
 unzip(here("ExMove.zip"))
