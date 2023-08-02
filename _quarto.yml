@@ -8,10 +8,11 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: Glossary.qmd
-      - href: FAQs.qmd
       - href: User_guide.qmd
         text: User guide
+      - href: Glossary.qmd
+      - href: FAQs.qmd
+
     right: 
       - icon: github
         href: https://github.com/ExMove/ExMove
