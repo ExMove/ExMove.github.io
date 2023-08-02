@@ -60,7 +60,7 @@
     "href": "index.html",
     "title": "ExMove",
     "section": "",
-    "text": "Welcome to the home page of ExMove. Here, you can find the resources to use our toolkit for processing biologging data from tag downloads to online archive."
+    "text": "Welcome to the home page of ExMove. Here, you can find the resources to use our toolkit for processing biologging data from tag downloads to online archive.\nBelow is an overview of the workflow and what you can do with it:\n%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing': 30}}}%%\nflowchart LR\n  S1[Read in data] ==&gt; S3(Merge)\n  S2[Read in metadata] ==&gt; S3 ==&gt; A(Clean)\n  subgraph shiny [\"(Parameter determination in Shiny app)\"]\n  style shiny fill:#fbfbfb, stroke:#d3d3d3, stroke-width:px\n  A(Clean) ==&gt; B(Process) ==&gt; C(Filter)\n  D(Optional&lt;br/&gt;scripts)\n  end\n  C ==&gt; S{Standardised&lt;br/&gt;dataset}\n  C --&gt; D --&gt; S\n  S --&gt; E(Analyses)\n  S ==&gt; F(Archive)\n  linkStyle 6,7 stroke-dasharray: 4 4"
   },
   {
     "objectID": "Glossary.html",

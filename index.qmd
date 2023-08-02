@@ -23,7 +23,26 @@ citations-hover: false
 
 Welcome to the home page of ExMove. Here, you can find the resources to use our toolkit for processing biologging data from tag downloads to online archive.
 
-
+Below is an overview of the workflow and what you can do with it:
+```{mermaid}
+%%| fig-width: 9
+%%| eval: true
+%%| echo: false
+%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing': 30}}}%%
+flowchart LR
+  S1[Read in data] ==> S3(Merge)
+  S2[Read in metadata] ==> S3 ==> A(Clean)
+  subgraph shiny ["(Parameter determination in Shiny app)"]
+  style shiny fill:#fbfbfb, stroke:#d3d3d3, stroke-width:px
+  A(Clean) ==> B(Process) ==> C(Filter)
+  D(Optional<br/>scripts)
+  end
+  C ==> S{Standardised<br/>dataset}
+  C --> D --> S
+  S --> E(Analyses)
+  S ==> F(Archive)
+  linkStyle 6,7 stroke-dasharray: 4 4
+```
 
 ##### Some links:
 

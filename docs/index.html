@@ -58,6 +58,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -135,6 +138,30 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>&nbsp;</p>
 <p>Welcome to the home page of ExMove. Here, you can find the resources to use our toolkit for processing biologging data from tag downloads to online archive.</p>
+<p>Below is an overview of the workflow and what you can do with it:</p>
+<div class="cell" data-fig-width="9" data-eval="true">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing': 30}}}%%
+flowchart LR
+  S1[Read in data] ==&gt; S3(Merge)
+  S2[Read in metadata] ==&gt; S3 ==&gt; A(Clean)
+  subgraph shiny ["(Parameter determination in Shiny app)"]
+  style shiny fill:#fbfbfb, stroke:#d3d3d3, stroke-width:px
+  A(Clean) ==&gt; B(Process) ==&gt; C(Filter)
+  D(Optional&lt;br/&gt;scripts)
+  end
+  C ==&gt; S{Standardised&lt;br/&gt;dataset}
+  C --&gt; D --&gt; S
+  S --&gt; E(Analyses)
+  S ==&gt; F(Archive)
+  linkStyle 6,7 stroke-dasharray: 4 4
+</pre>
+</div>
+</div>
+</div>
+</div>
 <section id="some-links" class="level5">
 <h5 class="anchored" data-anchor-id="some-links">Some links:</h5>
 <ul>
