@@ -13,7 +13,14 @@ format:
     fig-pos: 'h'
     fontfamily: libertinus
     fontsize: 12pt
-#renderthis::to_pdf(here("docs", "User_guide.html")) #run this line in console
+    include-in-header: 
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+          showspaces = false,
+          showtabs = false,
+          breaklines,
+          commandchars=\\\{\}}
 author:
   - name: Alice Trevail
     orcid: 0000-0002-6459-5213
