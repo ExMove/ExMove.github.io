@@ -3,147 +3,132 @@ title: "Glossary"
 number-sections: false
 ---
 
+# Workflow -- User Input Parameters
 
-# Workflow – User Input Parameters
-
-This page contains definitions for all of the user input parameters that are in the user guide. 
-
+This page contains definitions for all of the user input parameters that are in the user guide.
 
 ## 1. Read in data files
 
-- **species_code** – Throughout the workflow we use this parameter as a file/folder identifier for saving outputs. We suggest use a species or study site abbreviation. I.e. the data set for immature red-footed boobies became “RFB_IMM”.
+-   **`species_code`** -- Throughout the workflow we use this parameter as a file/folder identifier for saving outputs. We suggest use a species or study site abbreviation. I.e. the data set for immature red-footed boobies became "RFB_IMM".
 
-- **filepath** – This object specifies the location where the raw data files are stored. We use the here function to define the filepath for universality and to avoid issues when switching between operating systems. Ideally in this folder only the RAW tracking data files should be stored
+-   **`filepath`** -- This object specifies the location where the raw data files are stored. We use the here function to define the filepath for universality and to avoid issues when switching between operating systems. Ideally in this folder only the RAW tracking data files should be stored
 
-- **filepattern** – This specifies the common file pattern for the raw data files with the folder that is specified using the filepath user input parameter. If only the RAW data files are in this folder then the user can just use the file type as the common file pattern e.g. “*.txt” or “*.csv”. The asterisk “*” is used to match any preceding characters in the filename.
+-   **`filepattern`** -- This specifies the common file pattern for the raw data files with the folder that is specified using the filepath user input parameter. If only the RAW data files are in this folder then the user can just use the file type as the common file pattern e.g. "*.txt" or "*.csv". The asterisk "\*" is used to match any preceding characters in the filename.
 
-- **IDstart; IDend** – When setting up the data structure, we recommend saving a file for each individual animal with a unique identifier in the filename. The IDstart and IDend parameters represent numeric values denoting the start and end position of the unique individual identifier within the filenames. NB: the individual identifier should therefore be in the same location within the file name across all files. 
+-   **`IDstart`; `IDend`** -- When setting up the data structure, we recommend saving a file for each individual animal with a unique identifier in the filename. The IDstart and IDend parameters represent numeric values denoting the start and end position of the unique individual identifier within the filenames. NB: the individual identifier should therefore be in the same location within the file name across all files.
 
-- **skiplines** – this parameter denotes the number of lines at the top of the file to skip when it is read into R. The default value for this parameter is 0 so no lines are skipped. If for example you have a text file with additional info at the top that does not need to be read into R then you can increase this to the appropriate number of rows. 
+-   **`skiplines`** -- this parameter denotes the number of lines at the top of the file to skip when it is read into R. The default value for this parameter is 0 so no lines are skipped. If for example you have a text file with additional info at the top that does not need to be read into R then you can increase this to the appropriate number of rows.
 
-- **date_formats; datetime_formats** – These parameters are used to specify the date format and datetime formats of the tracking data respectively. These are specified in lubridate format, see here for a guide on how to specify date times in this format [https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf ](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf )
+-   **`date_formats`; `datetime_formats`** -- These parameters are used to specify the date format and datetime formats of the tracking data respectively. These are specified in lubridate format, see here for a guide on how to specify date times in this format <https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf>
 
-- **trackingdatatimezone** – this parameter is used to specify the timezone which the tracking data is collected in e.g. “GMT”. In R run the function `OlsonNames()` to get a full list of time zones. The user should know what timezone there data was recorded in.
+-   **`trackingdatatimezone`** -- this parameter is used to specify the timezone which the tracking data is collected in e.g. "GMT". In R run the function `OlsonNames()` to get a full list of time zones. The user should know what timezone there data was recorded in.
 
-- **colnames** – If column names are not present within the raw tracking data files, this parameter can be used to specify column names as a vector, e.g. c("Date", "Time", "Lat", "Long"). The default value is TRUE, which assumes column names are specified within the raw files.
+-   **`colnames`** -- If column names are not present within the raw tracking data files, this parameter can be used to specify column names as a vector, e.g. c("Date", "Time", "Lat", "Long"). The default value is TRUE, which assumes column names are specified within the raw files.
 
-- **user_delim** - set the eliminator for your RAW data files, this will depend on the file type that your data are saved as. Text files are often tab delaminated ("\t") and .csv are comma separated (“,”). Other common eliminators also include “;”, “/”, “\” or “|”. 
+-   **`user_delim`** - set the eliminator for your RAW data files, this will depend on the file type that your data are saved as. Text files are often tab delaminated ("\t") and .csv are comma separated (","). Other common eliminators also include";","/","" or "\|".
 
-- **user_trim_ws** - Specify as either TRUE or FALSE. Allows white space at the bottom of files to be trimmed, e.g. empty cells at the bottom of an excel document.  
+-   **`user_trim_ws`** - Specify as either TRUE or FALSE. Allows white space at the bottom of files to be trimmed, e.g. empty cells at the bottom of an excel document.
 
-- **ID_type** – data needs a unique individual identifier to differentiate between individuals. This user input parameter allows you to specify the column name that the individual identifier will be stored in. The individual identifier will be taken from the file name using the `IDstart` and `IDend` input parameters. 
+-   **`ID_type`** -- data needs a unique individual identifier to differentiate between individuals. This user input parameter allows you to specify the column name that the individual identifier will be stored in. The individual identifier will be taken from the file name using the `IDstart` and `IDend` input parameters.
 
-- **datetime_colnames** – this parameter defines the column(s) in which date and time information are stored. If date and time are stored in separate columns then specify two columns, e.g. c("Date", "Time"). NB: these have to be in the same order as they are stored in the data set. 
-
+-   **`datetime_colnames`** -- this parameter defines the column(s) in which date and time information are stored. If date and time are stored in separate columns then specify two columns, e.g. c("Date", "Time"). NB: these have to be in the same order as they are stored in the data set.
 
 ## 2. Merge with metadata
 
-- **filepath_meta** – this parameter defines the filepath for the metadata file. Again this parameter is specified using the here function for universality. 
+-   **`filepath_meta`** -- this parameter defines the filepath for the metadata file. Again this parameter is specified using the here function for universality.
 
-- **metadate_formats; metadatetime_formats** – These parameters are used to specify the date format and datetime formats of the metadata respectively. These are specified in lubridate format, see here for a guide on how to specify date times in this format [https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf)
+-   **`metadate_formats`; `metadatetime_formats`** -- These parameters are used to specify the date format and datetime formats of the metadata respectively. These are specified in lubridate format, see here for a guide on how to specify date times in this format <https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf>
 
-- **metatrackingdatatimezone** – this parameter is used to specify the timezone which the tracking data is collected in e.g. “GMT”. In R run the function `OlsonNames()` to get a full list of time zones.
-
+-   **`metatrackingdatatimezone`** -- this parameter is used to specify the timezone which the tracking data is collected in e.g. "GMT". In R run the function `OlsonNames()` to get a full list of time zones.
 
 ## 3. Cleaning
 
-- **No_data_vals** – this parameter is used to specify any values within the location (X, Y) columns that represent missing data. This is often tag-specific with common examples being “0” or “-999” but these may not always be applicable.
+-   **`No_data_vals`** -- this parameter is used to specify any values within the location (X, Y) columns that represent missing data. This is often tag-specific with common examples being "0" or "-999" but these may not always be applicable.
 
-- **na_cols** – this parameter is used to define a vector of column names which cannot contain NA values in order for a row to be retained. We suggest that columns containing information relating to X location, Y location, datetime and ID should not be allowed to contain NA values. 
-
+-   **`na_cols`** -- this parameter is used to define a vector of column names which cannot contain NA values in order for a row to be retained. We suggest that columns containing information relating to X location, Y location, datetime and ID should not be allowed to contain NA values.
 
 ## 4. Processing
 
-- **tracking_crs; meta_crs** – These parameters are used to specify the co-ordinate reference systems for the tracking and metadata respectively using EPSG codes. The default is lat/long which is EPSG code 4326. For a full list of EPSG cdoes see here: [https://spatialreference.org/ref/epsg/](https://spatialreference.org/ref/epsg/)
+-   **`tracking_crs`; `meta_crs`** -- These parameters are used to specify the co-ordinate reference systems for the tracking and metadata respectively using EPSG codes. The default is lat/long which is EPSG code 4326. For a full list of EPSG cdoes see here: <https://spatialreference.org/ref/epsg/>
 
-- **transform_crs** - Specify metric co-ordinate projection system to transform the data into for distance calculations with units in metres. WE STRONGLY RECCOMEND THAT YOU CHANGE THIS FOR YOUR STUDY SYSTEM/LOCATION. For advice on what to change this to see our FAQ document as the choice is nuanced and can have important implications on the metric calculated. 
-
+-   **`transform_crs`** - Specify metric co-ordinate projection system to transform the data into for distance calculations with units in metres. WE STRONGLY RECCOMEND THAT YOU CHANGE THIS FOR YOUR STUDY SYSTEM/LOCATION. For advice on what to change this to see our FAQ document as the choice is nuanced and can have important implications on the metric calculated.
 
 ## 5. Save df_diagnostic
 
-- **filepath_dfout** – this parameter is used to define the file path to save out the processed tracking data file again using the here function for universality. The data is read out at this point so that it can be read into the shiny app.
+-   **`filepath_dfout`** -- this parameter is used to define the file path to save out the processed tracking data file again using the here function for universality. The data is read out at this point so that it can be read into the shiny app.
 
-- **filename_dfout** – this parameter specifies the filename of the saved tracking data file.
-
+-   **`filename_dfout`** -- this parameter specifies the filename of the saved tracking data file.
 
 ## 6. Filtering
 
-- **filter_cutoff** – users may want to remove a section of the tracking data immediately following tag deployment while the animal recovers from the tagging process and adjusts to the device. This parameter is used to specify the length of this period along with the units of time – e.g. minutes, hours, days.
+-   **`filter_cutoff`** -- users may want to remove a section of the tracking data immediately following tag deployment while the animal recovers from the tagging process and adjusts to the device. This parameter is used to specify the length of this period along with the units of time -- e.g. minutes, hours, days.
 
-- **filter_speed** – this parameter is used to define a numeric value for the speed above which locations are classified as erroneous points and removed based on unrealistic values. The units are in metres per second as long as `transform_crs` was set to a projection that is in metres. The user should use ecological knowledge of their study system to set this parameter and should check the effect it has using summaries and visualisations.  
+-   **`filter_speed`** -- this parameter is used to define a numeric value for the speed above which locations are classified as erroneous points and removed based on unrealistic values. The units are in metres per second as long as `transform_crs` was set to a projection that is in metres. The user should use ecological knowledge of their study system to set this parameter and should check the effect it has using summaries and visualisations.
 
-- **Filter_nestdisp_dist; filter_netdist_units** – these parameters are used to define a threshold value for net squared displacement above which locations are considered as erroneous and select the distance units for this value e.g. metres/kilometers.
-
+-   **`Filter_nestdisp_dist`; `filter_netdist_units`** -- these parameters are used to define a threshold value for net squared displacement above which locations are considered as erroneous and select the distance units for this value e.g. metres/kilometers.
 
 ## 7. Summarise cleaned & filtered tracking data
 
-- **sampleRateUnits** – this parameter is used to define the units of time for the sampling rate calculating which is displayed in the summary table e.g. minutes/hours. Can be specified as one of the following: "secs", “mins”, "hours", "days" or "weeks".
+-   **`sampleRateUnits`** -- this parameter is used to define the units of time for the sampling rate calculating which is displayed in the summary table e.g. minutes/hours. Can be specified as one of the following: "secs", "mins", "hours", "days" or "weeks".
 
-- **grouping_factors_poplevel** – this parameter is used to define the grouping factors for the population-level summary table e.g. species/population/colony. This parameter can be made into a vector to include additional grouping factors such as age or sex.
+-   **`grouping_factors_poplevel`** -- this parameter is used to define the grouping factors for the population-level summary table e.g. species/population/colony. This parameter can be made into a vector to include additional grouping factors such as age or sex.
 
-- **grouping_factors_indlevel** - this parameter is used to define the grouping factors for the individual-level summary table, usually individual ID. This parameter can be made into a vector to include additional grouping factors such as temporal window (e.g. month).
-
+-   **`grouping_factors_indlevel`** - this parameter is used to define the grouping factors for the individual-level summary table, usually individual ID. This parameter can be made into a vector to include additional grouping factors such as temporal window (e.g. month).
 
 ## 8. Save df_filtered and summary data
 
-- **filepath_filtered_out** - this parameter is used to define the file path to save the filtered tracking data file again using the here function for universality.
+-   **`filepath_filtered_out`** - this parameter is used to define the file path to save the filtered tracking data file again using the here function for universality.
 
-- **filepath_summary_out** - this parameter is used to define the file path to save out the summary data frames again using the here function for universality.
+-   **`filepath_summary_out`** - this parameter is used to define the file path to save out the summary data frames again using the here function for universality.
 
-- **filename_filtered_out; filename_summary_pop_out; filename_summary_ind_out** – these parameters are used to specify the filenames for the filtered tracking data file and the population-level and individual-level summary files respectively.
-
+-   **`filename_filtered_out`; `filename_summary_pop_out`; `filename_summary_ind_out`** -- these parameters are used to specify the filenames for the filtered tracking data file and the population-level and individual-level summary files respectively.
 
 ## 9. Visualisation:
 
-- **device** – this parameter is used to specify the filetype for saving out visualization plots e.g. “jpeg”, “png” or ”tiff”
+-   **`device`** -- this parameter is used to specify the filetype for saving out visualization plots e.g. "jpeg", "png" or "tiff"
 
-- **units** – this parameter defines the units for saving out the visualization plots e.g. “mm” or “cm”.
+-   **`units`** -- this parameter defines the units for saving out the visualization plots e.g. "mm" or "cm".
 
-- **dpi** – this parameter is a numeric value which specifies the resolution for saving plots in dpi. The minimum value is usually 300. 
+-   **`dpi`** -- this parameter is a numeric value which specifies the resolution for saving plots in dpi. The minimum value is usually 300.
 
-- **Out_path** – this parameter specifies the filepath for reading out plots using the here function. 
+-   **`out_path`** -- this parameter specifies the filepath for reading out plots using the here function.
 
-- **topo_label** – we plot maps of the telemetry data over a topography base map. This parameter specifies the legend label for the topography data depending on the study system e.g. “depth (m)” or ”elevation (m)”
-
+-   **`topo_label`** -- we plot maps of the telemetry data over a topography base map. This parameter specifies the legend label for the topography data depending on the study system e.g. "depth (m)" or "elevation (m)"
 
 ## 10. Post processing: Optional steps
 
-- **filepath_final** – this parameter specifies the filepath for reading the final data frame back into the main workflow once the any optional post-processing has been performed. This parameter is specified using the “here” function for universality. If no optional post-processing is performed this can be set to read in the filtered data file saved in section 9. 
-
+-   **`filepath_final`** -- this parameter specifies the filepath for reading the final data frame back into the main workflow once the any optional post-processing has been performed. This parameter is specified using the "here" function for universality. If no optional post-processing is performed this can be set to read in the filtered data file saved in section 9.
 
 ## 11. Reformat data for upload to public databases
 
-- **tz_data** – timezone of the final tracking data to be uploaded. In R run the function `OlsonNames()` to get a full list of time zones.
+-   **`tz_data`** -- timezone of the final tracking data to be uploaded. In R run the function `OlsonNames()` to get a full list of time zones.
 
-- **grouping_factors** – a vector of grouping factors for the final reformatted tracking data. Each level will be saved as a separate file e.g. ID/Age/Sex/Species
+-   **`grouping_factors`** -- a vector of grouping factors for the final reformatted tracking data. Each level will be saved as a separate file e.g. ID/Age/Sex/Species
 
-- **filepath_dfout** – the filepath for saving out the reformatted data for database upload created using the here function.
-
+-   **`filepath_dfout`** -- the filepath for saving out the reformatted data for database upload created using the here function.
 
 ## Optional Processing_Central place trips.R
 
-NOTE: there are a number of user input parameters in this script that are repeats of the ones above. If you can’t find the user input parameter below then use the search function to find it above. 
+NOTE: there are a number of user input parameters in this script that are repeats of the ones above. If you can't find the user input parameter below then use the search function to find it above.
 
-- **threshold_dist** – this parameter is used to define a threshold buffer distance in metres from the central place to label points as “at the central place” or “away from the central place” in order to define foraging trips. The choice of this parameter is dependent on the study species. For instance, seabirds can sit on the sea some distance from the central place while not having started a foraging trip. 
+-   **`threshold_dist`** -- this parameter is used to define a threshold buffer distance in metres from the central place to label points as "at the central place" or "away from the central place" in order to define foraging trips. The choice of this parameter is dependent on the study species. For instance, seabirds can sit on the sea some distance from the central place while not having started a foraging trip.
 
-- **threshold_time** – this parameter is used to define the minimum length of time in minutes required for an absence from the central location to be classified as a trip. The duration of each consecutive series of locations classified as “away from the central place” is calculated and those series with a duration less than `threshold_time` are removed.
+-   **`threshold_time`** -- this parameter is used to define the minimum length of time in minutes required for an absence from the central location to be classified as a trip. The duration of each consecutive series of locations classified as "away from the central place" is calculated and those series with a duration less than `threshold_time` are removed.
 
-- **shapefilepath** – this parameter is used to define the filepath to read in a shapefile used to define the extent of a central place or colony for the purposes of defining trips. This is optional and the central place can be specified alternatively using a single X, Y location. 
-
+-   **`shapefilepath`** -- this parameter is used to define the filepath to read in a shapefile used to define the extent of a central place or colony for the purposes of defining trips. This is optional and the central place can be specified alternatively using a single X, Y location.
 
 ## Optional Processing_Resampling.R
 
-- **Time_unit** - select the time unit to summaries and visualise sampling intervals at. Options include "secs", “mins”, "hours", "days" or "weeks".
+-   **`time_unit`** - select the time unit to summaries and visualise sampling intervals at. Options include "secs", "mins", "hours", "days" or "weeks".
 
-- **subsampling_unit** – this parameter defines the time unit for the resampling the tracking data to. Options include "secs", “mins”, "hours", "days" or "weeks".
+-   **`subsampling_unit`** -- this parameter defines the time unit for the resampling the tracking data to. Options include "secs", "mins", "hours", "days" or "weeks".
 
-- **subsampling_res** – this parameter is a numerical value which defines the resolution which the data is resampled to. NOTE: if sub-sampling to an interval greater than 60 minutes (e.g. 2 hours) then change the unit to "hours" and resolution to 2. Do not use 120 "mins".  
-
+-   **`subsampling_res`** -- this parameter is a numerical value which defines the resolution which the data is resampled to. NOTE: if sub-sampling to an interval greater than 60 minutes (e.g. 2 hours) then change the unit to "hours" and resolution to 2. Do not use 120 "mins".
 
 ## Optional Processing_Segmentation.R
 
-- **units_df_datetime** – this parameter specifies the units of the time difference column that will be created in the data. Due to earlier filtering the duration between successive locations is recalculated again in this script. 
+-   **`units_df_datetime`** -- this parameter specifies the units of the time difference column that will be created in the data. Due to earlier filtering the duration between successive locations is recalculated again in this script.
 
-- **threshold_time** – this parameter defines the threshold time value above which gaps in the data are split and labelled as separate segments. Therefore if the `difftime` column in the data set exceeds this duration then the track will be split at that point. 
+-   **`threshold_time`** -- this parameter defines the threshold time value above which gaps in the data are split and labelled as separate segments. Therefore if the `difftime` column in the data set exceeds this duration then the track will be split at that point.
 
-- **threshold_points** – this parameter is a numerical value which defines the minimum number of data points required for a valid segment. If a segment is below this threshold then all the locations contained within it are removed from the data set. These small segments are often not of use for further analysis that requires segmented data with consistent sampling intervals, e.g. hidden markov models. 
+-   **`threshold_points`** -- this parameter is a numerical value which defines the minimum number of data points required for a valid segment. If a segment is below this threshold then all the locations contained within it are removed from the data set. These small segments are often not of use for further analysis that requires segmented data with consistent sampling intervals, e.g. hidden markov models.

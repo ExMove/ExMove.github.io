@@ -22,24 +22,23 @@ Below is a list of common issues/errors that you might come across when using th
 
 ### GitHub issues
 
-Using GitHub is not essential for using this workflow — you can download the repo from [![Code](https://img.shields.io/badge/-%20Code▼-brightgreen?style=flat-square)](https://github.com/AliceTrevail/Code-workshop) > `Download Zip`, unzip to your machine, and start by opening the `.Rproj` file.
+Using GitHub is not essential for using this workflow --- you can download the repo from [![Code](https://img.shields.io/badge/-%20Code▼-brightgreen?style=flat-square)](https://github.com/AliceTrevail/Code-workshop) \> `Download Zip`, unzip to your machine, and start by opening the `.Rproj` file.
 
-However, if you want to contribute improvements to the repo, or are just interested in getting to grips with GitHub for your own research projects, there are great resources online for getting started (see: [setting up GitHub](https://intro2r.com/setup_git.html) | [cloning a repo](https://intro2r.com/setting-up-a-project-in-rstudio.html) | [using GitHub with RStudio](https://intro2r.com/use_git.html)).
+However, if you want to contribute improvements to the repo, or are just interested in getting to grips with GitHub for your own research projects, there are great resources online for getting started (see: [setting up GitHub](https://intro2r.com/setup_git.html) \| [cloning a repo](https://intro2r.com/setting-up-a-project-in-rstudio.html) \| [using GitHub with RStudio](https://intro2r.com/use_git.html)).
 
 ### Using RStudio projects and `here` for reproducible filepaths
 
-When we open a `.Rproj` file (which should be the starting point for this workflow), this opens up a fresh instance of RStudio, with a dedicated project environment and access to all the folders and files contained inside that project folder. If you're not familiar with using RStudio projects, have a look at [this section of R for Data Science](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects) for a quick explained. 
+When we open a `.Rproj` file (which should be the starting point for this workflow), this opens up a fresh instance of RStudio, with a dedicated project environment and access to all the folders and files contained inside that project folder. If you're not familiar with using RStudio projects, have a look at [this section of R for Data Science](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects) for a quick explained.
 
 By combining Rstudio projects with the [`here`](https://here.r-lib.org/) package, we can create relative filepaths that work across machines, so you won't have to edit a complicated filepath to get the code to run (for more info see the ['Getting started'](https://here.r-lib.org/articles/here.html) section of the `here` documentation).
-
 
 ## Reporting in a paper
 
 ### How to report usage of this workflow in a paper
+
 If you have used this workflow and you wish to report this in a scientific publication then we provide the text below as a suggestion as to how the user might do so.
 
 "Animal tracking data in this study was cleaned following the key principles of clean data in Langley *et al.* (2023). Duplicated and erroneous data points were removed, a maximum speed filter of **XX**m/s applied and data **YY**hours after initial deployment removed"
-
 
 ## Data problems
 
@@ -47,10 +46,10 @@ If you have used this workflow and you wish to report this in a scientific publi
 
 Lots of data sets include multiple files for a single individual, when individuals are tracked more than once. The workflow can filter raw tracking data over multiple deployments. For it to work, make sure to check:
 
-* The raw data contain individual `ID`, read in from the file name
-* The metadata includes one row per unique tag deployment per individual
-* The metadata contains a column with a unique value for each deployment (e.g., `DeployID`/`Year`)
-* This identifying column is included in `df_metadataslim`
+-   The raw data contain individual `ID`, read in from the file name
+-   The metadata includes one row per unique tag deployment per individual
+-   The metadata contains a column with a unique value for each deployment (e.g., `DeployID`/`Year`)
+-   This identifying column is included in `df_metadataslim`
 
 When joining the raw data and metadata, the raw data will be duplicated for each row of ID in the metadata (i.e., for each `DeployID`/`Year`). When we filter the data to the deployment period only (`df_clean`) the duplicated rows, where tracking DateTimes are outside of the individual's deployment period, are removed.
 
@@ -60,11 +59,11 @@ An example of how to use multiple ID columns in this way is included in the trou
 
 Sometimes tags are used multiple times on different individuals, but data are downloaded in a single file per tag. It is much better practice to run all processing in R, rather than splitting the files prior to this workflow. With a couple of tweaks, the workflow can filter raw tracking data files containing multiple deployments:
 
-* Make sure `TagID` is included in the file name, instead of individual `ID`
-* When reading in the raw data, replace `ID` with `TagID`
-* Make sure the metadata includes one row per unique tag deployment per individual
-* Make sure the metadata file and `df_metadataslim` contain both `ID` and `TagID`
-* When combining raw and metadata, left_join by `TagID`, instead of ID:
+-   Make sure `TagID` is included in the file name, instead of individual `ID`
+-   When reading in the raw data, replace `ID` with `TagID`
+-   Make sure the metadata includes one row per unique tag deployment per individual
+-   Make sure the metadata file and `df_metadataslim` contain both `ID` and `TagID`
+-   When combining raw and metadata, left_join by `TagID`, instead of ID:
 
 ```{r}
 #| echo: true
@@ -77,7 +76,6 @@ When joining the raw data and metadata, the raw data will be duplicated for each
 
 An example of how to use multiple ID columns in this way is included in the troubleshooting script, named `Troubleshoot - multiple ID columns.R`.
 
-
 ## Geographic projection issues
 
 ### What is a CRS?
@@ -86,7 +84,7 @@ Coordinate Reference Systems (or CRS) are the framework we use to represent loca
 
 CRS for `sf` objects are usually defined at creation (e.g. the `crs =` argument of `st_as_sf`), but can also be retrieved or replaced with [`st_crs`](https://r-spatial.github.io/sf/reference/st_crs.html), and transformed from one projection to another with [`st_transform`](https://r-spatial.github.io/sf/reference/st_transform.html).
 
-More information on these concepts can be found in the sf documentation (see: [The flat earth model](https://r-spatial.org/r/2020/06/17/s2.html) | [spherical geometry](https://r-spatial.github.io/sf/articles/sf7.html) | [miscellaneous](https://r-spatial.github.io/sf/articles/sf6.html))
+More information on these concepts can be found in the sf documentation (see: [The flat earth model](https://r-spatial.org/r/2020/06/17/s2.html) \| [spherical geometry](https://r-spatial.github.io/sf/articles/sf7.html) \| [miscellaneous](https://r-spatial.github.io/sf/articles/sf6.html))
 
 ### What does this st_intersects warning mean?
 
@@ -96,7 +94,6 @@ message("## although coordinates are longitude/latitude, st_intersects assumes t
 ```
 
 This warning message relates to the way that `sf` deals with geographic coordinates and how it assumes they are projected. For some types of geometric operations, it is very important to be aware of the current projection (see [this r-spatial post](https://r-spatial.org/r/2020/06/17/s2.html) for a nice explanation of the issue). For more general information on `sf` error messages, see the [sf misc page](https://cran.r-project.org/web/packages/sf/vignettes/sf6.html#what_is_this_epsg_code_all_about).
-
 
 ## Timezones
 
@@ -108,6 +105,7 @@ To find the code for a specific timezone, you can search the full list of tz's t
 #| echo: true
 head(OlsonNames())
 ```
+
 -   Lists of supported timezone codes can also be found online (e.g. [wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
 ### Converting between timezones
@@ -119,7 +117,6 @@ If you have data from different timezones and you want to convert everything to 
 x <- ymd_hms("2009-08-07 00:00:01", tz = "America/New_York")
 with_tz(x, "GMT") #converts US DatTime to UK DateTime
 ```
-
 
 ## Resource limitations
 
@@ -146,5 +143,4 @@ Then add `R_MAX_VSIZE=32Gb` as a line to the .Renviron file that opens up (32Gb 
 
 ## P.S: Why isn't ExMove a package?
 
-As `sp` is [gradually replaced](https://r-spatial.org/r/2023/04/10/evolution3.html#sp-evolution-status) by `sf`, and tidyverse gains traction in the R community, researchers (ourselves included) working with animal movement data are in a position where they need to either update their existing code, or find access to modern learning resources. Unfortunately, there are no resources that show how use `sf` and tidyverse for animal movement in this way. Rather than create a new package (given that `sf` provides nearly all the required functions already), we opted to provide this code directly, in the same workflow format that we'd use it. This is so users can see and understand what is happening at each step, and can modify the workflow to suit their own needs. With the increasing importance of reproducibility in the scientific community, we hope that an open-access approach will help to make animal movement analysis more accessible and transparent.
-
+As `sp` is [gradually replaced](https://r-spatial.org/r/2023/04/10/evolution3.html#sp-evolution-status) by `sf`, and tidyverse gains traction in the R community, researchers (ourselves included) working with animal movement data are in a position where they need to either update their existing code, or find access to modern learning resources. Unfortunately, there are only limited resources that show how use `sf` and tidyverse for animal movement in this way. Rather than create a new package (given that `sf` provides nearly all the required functions already), we opted to provide this code directly, in the same workflow format that we'd use it. This is so users can see and understand what is happening at each step, and can modify the workflow to suit their own needs. With the increasing importance of reproducibility in the scientific community, we hope that an open-access approach will help to make animal movement analysis more accessible and transparent.

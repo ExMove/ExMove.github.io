@@ -34,7 +34,7 @@ R.utils::copyDirectory(from = here("ExMove-main","Data"),
 unlink(here("ExMove.zip"))
 unlink(here("ExMove-main"), recursive = TRUE)
 
-# Now that almost everything is copied, render the website
+# Now that almost everything is copied, render the website (this takes a while - wait until you see it rendered in viewer)
 quarto::quarto_render()
 
 # Finally, replace the latex version of the user guide with the nicely-rendered pdf version (directly from ExMove repo)
