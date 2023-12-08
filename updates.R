@@ -6,7 +6,7 @@
 # We can move multiple files automatically and reproducibly, hopefully minimising any updating errors
 
 # Load packages
-pacman::p_load(here)
+pacman::p_load(here, quarto, R.utils)
 
 # Download a zip file of the complete ExMove repo (only 21MB so pretty quick)
 download.file(url = "https://github.com/ExMove/ExMove/archive/refs/heads/main.zip", 

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ExMove - Glossary</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ExMove</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./User_guide.html" rel="" target="">
+ <span class="menu-text">User guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Glossary.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Glossary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./FAQs.html" rel="" target="">
+ <span class="menu-text">FAQ’s</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ExMove/ExMove" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#workflow-user-input-parameters" id="toc-workflow-user-input-parameters" class="nav-link active" data-scroll-target="#workflow-user-input-parameters">Workflow – User Input Parameters</a>
+  <ul class="collapse">
+  <li><a href="#read-in-data-files" id="toc-read-in-data-files" class="nav-link" data-scroll-target="#read-in-data-files">1. Read in data files</a></li>
+  <li><a href="#merge-with-metadata" id="toc-merge-with-metadata" class="nav-link" data-scroll-target="#merge-with-metadata">2. Merge with metadata</a></li>
+  <li><a href="#cleaning" id="toc-cleaning" class="nav-link" data-scroll-target="#cleaning">3. Cleaning</a></li>
+  <li><a href="#processing" id="toc-processing" class="nav-link" data-scroll-target="#processing">4. Processing</a></li>
+  <li><a href="#save-df_diagnostic" id="toc-save-df_diagnostic" class="nav-link" data-scroll-target="#save-df_diagnostic">5. Save df_diagnostic</a></li>
+  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering">6. Filtering</a></li>
+  <li><a href="#summarise-cleaned-filtered-tracking-data" id="toc-summarise-cleaned-filtered-tracking-data" class="nav-link" data-scroll-target="#summarise-cleaned-filtered-tracking-data">7. Summarise cleaned &amp; filtered tracking data</a></li>
+  <li><a href="#save-df_filtered-and-summary-data" id="toc-save-df_filtered-and-summary-data" class="nav-link" data-scroll-target="#save-df_filtered-and-summary-data">8. Save df_filtered and summary data</a></li>
+  <li><a href="#visualisation" id="toc-visualisation" class="nav-link" data-scroll-target="#visualisation">9. Visualisation:</a></li>
+  <li><a href="#post-processing-optional-steps" id="toc-post-processing-optional-steps" class="nav-link" data-scroll-target="#post-processing-optional-steps">10. Post processing: Optional steps</a></li>
+  <li><a href="#reformat-data-for-upload-to-public-databases" id="toc-reformat-data-for-upload-to-public-databases" class="nav-link" data-scroll-target="#reformat-data-for-upload-to-public-databases">11. Reformat data for upload to public databases</a></li>
+  <li><a href="#optional-processing_central-place-trips.r" id="toc-optional-processing_central-place-trips.r" class="nav-link" data-scroll-target="#optional-processing_central-place-trips.r">Optional Processing_Central place trips.R</a></li>
+  <li><a href="#optional-processing_resampling.r" id="toc-optional-processing_resampling.r" class="nav-link" data-scroll-target="#optional-processing_resampling.r">Optional Processing_Resampling.R</a></li>
+  <li><a href="#optional-processing_segmentation.r" id="toc-optional-processing_segmentation.r" class="nav-link" data-scroll-target="#optional-processing_segmentation.r">Optional Processing_Segmentation.R</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Glossary</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="workflow-user-input-parameters" class="level1">
+<h1>Workflow – User Input Parameters</h1>
+<p>This page contains definitions for all of the user input parameters that are in the user guide.</p>
+<section id="read-in-data-files" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-data-files">1. Read in data files</h2>
+<ul>
+<li><p><strong>species_code</strong> – Throughout the workflow we use this parameter as a file/folder identifier for saving outputs. We suggest use a species or study site abbreviation. I.e. the data set for immature red-footed boobies became “RFB_IMM”.</p></li>
+<li><p><strong>filepath</strong> – This object specifies the location where the raw data files are stored. We use the here function to define the filepath for universality and to avoid issues when switching between operating systems. Ideally in this folder only the RAW tracking data files should be stored</p></li>
+<li><p><strong>filepattern</strong> – This specifies the common file pattern for the raw data files with the folder that is specified using the filepath user input parameter. If only the RAW data files are in this folder then the user can just use the file type as the common file pattern e.g.&nbsp;“<em>.txt” or “</em>.csv”. The asterisk “*” is used to match any preceding characters in the filename.</p></li>
+<li><p><strong>IDstart; IDend</strong> – When setting up the data structure, we recommend saving a file for each individual animal with a unique identifier in the filename. The IDstart and IDend parameters represent numeric values denoting the start and end position of the unique individual identifier within the filenames. NB: the individual identifier should therefore be in the same location within the file name across all files.</p></li>
+<li><p><strong>skiplines</strong> – this parameter denotes the number of lines at the top of the file to skip when it is read into R. The default value for this parameter is 0 so no lines are skipped. If for example you have a text file with additional info at the top that does not need to be read into R then you can increase this to the appropriate number of rows.</p></li>
+<li><p><strong>date_formats; datetime_formats</strong> – These parameters are used to specify the date format and datetime formats of the tracking data respectively. These are specified in lubridate format, see here for a guide on how to specify date times in this format <a href="https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf">https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf</a></p></li>
+<li><p><strong>trackingdatatimezone</strong> – this parameter is used to specify the timezone which the tracking data is collected in e.g.&nbsp;“GMT”. In R run the function <code>OlsonNames()</code> to get a full list of time zones. The user should know what timezone there data was recorded in.</p></li>
+<li><p><strong>colnames</strong> – If column names are not present within the raw tracking data files, this parameter can be used to specify column names as a vector, e.g.&nbsp;c(“Date”, “Time”, “Lat”, “Long”). The default value is TRUE, which assumes column names are specified within the raw files.</p></li>
+<li><p><strong>user_delim</strong> - set the eliminator for your RAW data files, this will depend on the file type that your data are saved as. Text files are often tab delaminated (“) and .csv are comma separated (“,”). Other common eliminators also include “;”, “/”, “” or “|”.</p></li>
+<li><p><strong>user_trim_ws</strong> - Specify as either TRUE or FALSE. Allows white space at the bottom of files to be trimmed, e.g.&nbsp;empty cells at the bottom of an excel document.</p></li>
+<li><p><strong>ID_type</strong> – data needs a unique individual identifier to differentiate between individuals. This user input parameter allows you to specify the column name that the individual identifier will be stored in. The individual identifier will be taken from the file name using the <code>IDstart</code> and <code>IDend</code> input parameters.</p></li>
+<li><p><strong>datetime_colnames</strong> – this parameter defines the column(s) in which date and time information are stored. If date and time are stored in separate columns then specify two columns, e.g.&nbsp;c(“Date”, “Time”). NB: these have to be in the same order as they are stored in the data set.</p></li>
+</ul>
+</section>
+<section id="merge-with-metadata" class="level2">
+<h2 class="anchored" data-anchor-id="merge-with-metadata">2. Merge with metadata</h2>
+<ul>
+<li><p><strong>filepath_meta</strong> – this parameter defines the filepath for the metadata file. Again this parameter is specified using the here function for universality.</p></li>
+<li><p><strong>metadate_formats; metadatetime_formats</strong> – These parameters are used to specify the date format and datetime formats of the metadata respectively. These are specified in lubridate format, see here for a guide on how to specify date times in this format <a href="https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf">https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf</a></p></li>
+<li><p><strong>metatrackingdatatimezone</strong> – this parameter is used to specify the timezone which the tracking data is collected in e.g.&nbsp;“GMT”. In R run the function <code>OlsonNames()</code> to get a full list of time zones.</p></li>
+</ul>
+</section>
+<section id="cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning">3. Cleaning</h2>
+<ul>
+<li><p><strong>No_data_vals</strong> – this parameter is used to specify any values within the location (X, Y) columns that represent missing data. This is often tag-specific with common examples being “0” or “-999” but these may not always be applicable.</p></li>
+<li><p><strong>na_cols</strong> – this parameter is used to define a vector of column names which cannot contain NA values in order for a row to be retained. We suggest that columns containing information relating to X location, Y location, datetime and ID should not be allowed to contain NA values.</p></li>
+</ul>
+</section>
+<section id="processing" class="level2">
+<h2 class="anchored" data-anchor-id="processing">4. Processing</h2>
+<ul>
+<li><p><strong>tracking_crs; meta_crs</strong> – These parameters are used to specify the co-ordinate reference systems for the tracking and metadata respectively using EPSG codes. The default is lat/long which is EPSG code 4326. For a full list of EPSG cdoes see here: <a href="https://spatialreference.org/ref/epsg/">https://spatialreference.org/ref/epsg/</a></p></li>
+<li><p><strong>transform_crs</strong> - Specify metric co-ordinate projection system to transform the data into for distance calculations with units in metres. WE STRONGLY RECCOMEND THAT YOU CHANGE THIS FOR YOUR STUDY SYSTEM/LOCATION. For advice on what to change this to see our FAQ document as the choice is nuanced and can have important implications on the metric calculated.</p></li>
+</ul>
+</section>
+<section id="save-df_diagnostic" class="level2">
+<h2 class="anchored" data-anchor-id="save-df_diagnostic">5. Save df_diagnostic</h2>
+<ul>
+<li><p><strong>filepath_dfout</strong> – this parameter is used to define the file path to save out the processed tracking data file again using the here function for universality. The data is read out at this point so that it can be read into the shiny app.</p></li>
+<li><p><strong>filename_dfout</strong> – this parameter specifies the filename of the saved tracking data file.</p></li>
+</ul>
+</section>
+<section id="filtering" class="level2">
+<h2 class="anchored" data-anchor-id="filtering">6. Filtering</h2>
+<ul>
+<li><p><strong>filter_cutoff</strong> – users may want to remove a section of the tracking data immediately following tag deployment while the animal recovers from the tagging process and adjusts to the device. This parameter is used to specify the length of this period along with the units of time – e.g.&nbsp;minutes, hours, days.</p></li>
+<li><p><strong>filter_speed</strong> – this parameter is used to define a numeric value for the speed above which locations are classified as erroneous points and removed based on unrealistic values. The units are in metres per second as long as <code>transform_crs</code> was set to a projection that is in metres. The user should use ecological knowledge of their study system to set this parameter and should check the effect it has using summaries and visualisations.</p></li>
+<li><p><strong>Filter_nestdisp_dist; filter_netdist_units</strong> – these parameters are used to define a threshold value for net squared displacement above which locations are considered as erroneous and select the distance units for this value e.g.&nbsp;metres/kilometers.</p></li>
+</ul>
+</section>
+<section id="summarise-cleaned-filtered-tracking-data" class="level2">
+<h2 class="anchored" data-anchor-id="summarise-cleaned-filtered-tracking-data">7. Summarise cleaned &amp; filtered tracking data</h2>
+<ul>
+<li><p><strong>sampleRateUnits</strong> – this parameter is used to define the units of time for the sampling rate calculating which is displayed in the summary table e.g.&nbsp;minutes/hours. Can be specified as one of the following: “secs”, “mins”, “hours”, “days” or “weeks”.</p></li>
+<li><p><strong>grouping_factors_poplevel</strong> – this parameter is used to define the grouping factors for the population-level summary table e.g.&nbsp;species/population/colony. This parameter can be made into a vector to include additional grouping factors such as age or sex.</p></li>
+<li><p><strong>grouping_factors_indlevel</strong> - this parameter is used to define the grouping factors for the individual-level summary table, usually individual ID. This parameter can be made into a vector to include additional grouping factors such as temporal window (e.g.&nbsp;month).</p></li>
+</ul>
+</section>
+<section id="save-df_filtered-and-summary-data" class="level2">
+<h2 class="anchored" data-anchor-id="save-df_filtered-and-summary-data">8. Save df_filtered and summary data</h2>
+<ul>
+<li><p><strong>filepath_filtered_out</strong> - this parameter is used to define the file path to save the filtered tracking data file again using the here function for universality.</p></li>
+<li><p><strong>filepath_summary_out</strong> - this parameter is used to define the file path to save out the summary data frames again using the here function for universality.</p></li>
+<li><p><strong>filename_filtered_out; filename_summary_pop_out; filename_summary_ind_out</strong> – these parameters are used to specify the filenames for the filtered tracking data file and the population-level and individual-level summary files respectively.</p></li>
+</ul>
+</section>
+<section id="visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="visualisation">9. Visualisation:</h2>
+<ul>
+<li><p><strong>device</strong> – this parameter is used to specify the filetype for saving out visualization plots e.g.&nbsp;“jpeg”, “png” or ”tiff”</p></li>
+<li><p><strong>units</strong> – this parameter defines the units for saving out the visualization plots e.g.&nbsp;“mm” or “cm”.</p></li>
+<li><p><strong>dpi</strong> – this parameter is a numeric value which specifies the resolution for saving plots in dpi. The minimum value is usually 300.</p></li>
+<li><p><strong>Out_path</strong> – this parameter specifies the filepath for reading out plots using the here function.</p></li>
+<li><p><strong>topo_label</strong> – we plot maps of the telemetry data over a topography base map. This parameter specifies the legend label for the topography data depending on the study system e.g.&nbsp;“depth (m)” or ”elevation (m)”</p></li>
+</ul>
+</section>
+<section id="post-processing-optional-steps" class="level2">
+<h2 class="anchored" data-anchor-id="post-processing-optional-steps">10. Post processing: Optional steps</h2>
+<ul>
+<li><strong>filepath_final</strong> – this parameter specifies the filepath for reading the final data frame back into the main workflow once the any optional post-processing has been performed. This parameter is specified using the “here” function for universality. If no optional post-processing is performed this can be set to read in the filtered data file saved in section 9.</li>
+</ul>
+</section>
+<section id="reformat-data-for-upload-to-public-databases" class="level2">
+<h2 class="anchored" data-anchor-id="reformat-data-for-upload-to-public-databases">11. Reformat data for upload to public databases</h2>
+<ul>
+<li><p><strong>tz_data</strong> – timezone of the final tracking data to be uploaded. In R run the function <code>OlsonNames()</code> to get a full list of time zones.</p></li>
+<li><p><strong>grouping_factors</strong> – a vector of grouping factors for the final reformatted tracking data. Each level will be saved as a separate file e.g.&nbsp;ID/Age/Sex/Species</p></li>
+<li><p><strong>filepath_dfout</strong> – the filepath for saving out the reformatted data for database upload created using the here function.</p></li>
+</ul>
+</section>
+<section id="optional-processing_central-place-trips.r" class="level2">
+<h2 class="anchored" data-anchor-id="optional-processing_central-place-trips.r">Optional Processing_Central place trips.R</h2>
+<p>NOTE: there are a number of user input parameters in this script that are repeats of the ones above. If you can’t find the user input parameter below then use the search function to find it above.</p>
+<ul>
+<li><p><strong>threshold_dist</strong> – this parameter is used to define a threshold buffer distance in metres from the central place to label points as “at the central place” or “away from the central place” in order to define foraging trips. The choice of this parameter is dependent on the study species. For instance, seabirds can sit on the sea some distance from the central place while not having started a foraging trip.</p></li>
+<li><p><strong>threshold_time</strong> – this parameter is used to define the minimum length of time in minutes required for an absence from the central location to be classified as a trip. The duration of each consecutive series of locations classified as “away from the central place” is calculated and those series with a duration less than <code>threshold_time</code> are removed.</p></li>
+<li><p><strong>shapefilepath</strong> – this parameter is used to define the filepath to read in a shapefile used to define the extent of a central place or colony for the purposes of defining trips. This is optional and the central place can be specified alternatively using a single X, Y location.</p></li>
+</ul>
+</section>
+<section id="optional-processing_resampling.r" class="level2">
+<h2 class="anchored" data-anchor-id="optional-processing_resampling.r">Optional Processing_Resampling.R</h2>
+<ul>
+<li><p><strong>Time_unit</strong> - select the time unit to summaries and visualise sampling intervals at. Options include “secs”, “mins”, “hours”, “days” or “weeks”.</p></li>
+<li><p><strong>subsampling_unit</strong> – this parameter defines the time unit for the resampling the tracking data to. Options include “secs”, “mins”, “hours”, “days” or “weeks”.</p></li>
+<li><p><strong>subsampling_res</strong> – this parameter is a numerical value which defines the resolution which the data is resampled to. NOTE: if sub-sampling to an interval greater than 60 minutes (e.g.&nbsp;2 hours) then change the unit to “hours” and resolution to 2. Do not use 120 “mins”.</p></li>
+</ul>
+</section>
+<section id="optional-processing_segmentation.r" class="level2">
+<h2 class="anchored" data-anchor-id="optional-processing_segmentation.r">Optional Processing_Segmentation.R</h2>
+<ul>
+<li><p><strong>units_df_datetime</strong> – this parameter specifies the units of the time difference column that will be created in the data. Due to earlier filtering the duration between successive locations is recalculated again in this script.</p></li>
+<li><p><strong>threshold_time</strong> – this parameter defines the threshold time value above which gaps in the data are split and labelled as separate segments. Therefore if the <code>difftime</code> column in the data set exceeds this duration then the track will be split at that point.</p></li>
+<li><p><strong>threshold_points</strong> – this parameter is a numerical value which defines the minimum number of data points required for a valid segment. If a segment is below this threshold then all the locations contained within it are removed from the data set. These small segments are often not of use for further analysis that requires segmented data with consistent sampling intervals, e.g.&nbsp;hidden markov models.</p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
