@@ -35,11 +35,9 @@ project:
   execute-dir: project #use project as top level
 ---
 
-
 ## Introduction
 
-This user guide can be used as a walkthrough for reading and processing tracking data files with the `Workflow.R` script. 
-You can use the example datasets provided in `Data`, or try with your own tracking data (see [Pre-flight checks](#pre-flight-checks) for details on data requirements and structure).
+This user guide can be used as a walkthrough for reading and processing tracking data files with the `Workflow.R` script. You can use the example datasets provided in `Data`, or try with your own tracking data (see [Pre-flight checks](#pre-flight-checks) for details on data requirements and structure).
 
 The following diagram gives an overview of the workflow (boxes link to relevant section):
 
@@ -75,7 +73,7 @@ flowchart LR
 %%  click ? "#visualisation";
 ```
 
-#### Dependencies:
+#### Dependencies: {#dependencies}
 
 -   This workflow uses the [R programming language](https://www.r-project.org/about.html), run via the [R Studio IDE](https://www.rstudio.com/products/rstudio/)
 -   All code embraces the core principles of how to structure ['tidy data'](https://r4ds.had.co.nz/tidy-data.html)
@@ -83,7 +81,7 @@ flowchart LR
 -   Requires [`tidyverse`](https://www.tidyverse.org/), [`data.table`](https://github.com/Rdatatable/data.table), [`sf`](https://r-spatial.github.io/sf/) and [`here`](https://here.r-lib.org/) packages to be installed
 -   Use our example data sets in the Data folder (RFB_IMM, RFB, GWFG, TRPE) or provide your own data
 
-#### User inputs
+#### User inputs {#user-inputs}
 
 Some code chunks require editing by the user to match the specific dataset being used (particularly if you are using your own data), and are highlighted as below (the 🧠 indicates you will need to think about the structure and format of your data when making these edits!):
 
@@ -105,22 +103,24 @@ example_input <- "uservalue" # In the R code, user input sections appear like th
 ## 0. Pre-flight checks {#pre-flight-checks}
 
 ##### How to use this workflow:
+
 -   We will inspect the data before reading it in, so there is no need to open it in another program (e.g., excel, which can corrupt dates and times)
 -   User-defined parameters (see [user inputs](#user-inputs)) are called within the subsequent processing steps
 -   Where you see: `## ** Option ** ##`, there is an alternative version of the code to fit some common alternative data formats
 -   Throughout, we will use some key functions to inspect the data (e.g., `head` for top rows, `str` for column types, and `names` for column names)
 
 ##### Data and directory structure:
+
 -   Data files should all be stored within the `Data` folder
 -   Folders and files are best named in `snakecase_format` as spaces in filepaths can cause issues
 -   Tracking data for each deployment/individual should be in a separate file
 -   Tracking data filenames should include an ID which is the same length for all individuals
 -   Tracking data must contain a timestamp and at least one other sensor column
 -   Metadata file should be in the parent directory of data files
--   Metadata should contain one row per individual per deployment
-*NB: if you have multiple animal movement projects, these should have completely separate directories*
+-   Metadata should contain one row per individual per deployment *NB: if you have multiple animal movement projects, these should have completely separate directories*
 
 ##### The importance of ID:
+
 -   Throughout this workflow, we use ID to refer to the unique code for an individual animal
 -   In certain cases, you might have additional ID columns in the metadata (e.g., `DeployID`),
 -   or read in data with a unique TagID instead of ID.
@@ -128,6 +128,7 @@ example_input <- "uservalue" # In the R code, user input sections appear like th
 -   For more info and helpful code, see the FAQ document & troubleshooting script
 
 ##### How to troubleshoot problems if something doesn't work with your data:
+
 -   Refer to the FAQ document in the GitHub page, which signposts to helpful resources online (e.g., CRS)
 -   See the troubleshooting code scripts that we've written to accompany this workflow (e.g., using multiple ID columns for re-deployments of tags/individuals)
 -   All functions in code chunks are automatically hyperlinked to their documentation, so feel free to explore this if you want to understand more about how this code works!
@@ -145,7 +146,6 @@ library(lubridate) # working with date-time data
 library(sf) # spatial data handling and manipulation
 library(here) # reproducible filepaths
 ```
-
 
 ## 1. Read in data files {#read-in-data-files}
 
@@ -177,8 +177,7 @@ ls_filenames <- list.files(path = filepath, recursive = TRUE, pattern = filepatt
 ls_filenames
 ```
 
-Adjust these numbers for extracting the ID number from file name using [`stringr`](https://stringr.tidyverse.org/index.html) (e.g. to extract `GV37501` from "GV37501_201606_DG_RFB.csv", we want characters 1-7). </br>
-***NB:*** *this approach only works if all ID's are the same length and in the same position --- see the [`str_sub`](https://stringr.tidyverse.org/reference/str_sub.html) documentation for other options.*
+Adjust these numbers for extracting the ID number from file name using [`stringr`](https://stringr.tidyverse.org/index.html) (e.g. to extract `GV37501` from "GV37501_201606_DG_RFB.csv", we want characters 1-7). </br> ***NB:*** *this approach only works if all ID's are the same length and in the same position --- see the [`str_sub`](https://stringr.tidyverse.org/reference/str_sub.html) documentation for other options.*
 
 ```{r}
 IDstart <- 1 #start position of the ID in the filename 
@@ -193,12 +192,12 @@ read_lines(test, n_max = 5)  # change n_max to change the number of rows to read
 ```
 
 Define number of lines at top of file to skip (e.g. if importing a text file with additional info at top).
+
 ```{r}
 skiplines <- 0
 ```
 
-Define date format(s) used (for passing to [`lubridate`](https://lubridate.tidyverse.org/reference/lubridate-package.html)) (`d` = day as decimal, `m` = month as decimal, `y` = year without century, `Y` = year with century). Parsing will work the same for different date delimiters (e.g. "dmY" will work for both `01-12-2022` and `01/12/2022`). </br>
-`lubridate` can even parse more than one date/time format within a dataframe, so if your data include multiple formats, make sure they are all included. Here, we've included some common combinations --- modify if your data include a different format
+Define date format(s) used (for passing to [`lubridate`](https://lubridate.tidyverse.org/reference/lubridate-package.html)) (`d` = day as decimal, `m` = month as decimal, `y` = year without century, `Y` = year with century). Parsing will work the same for different date delimiters (e.g. "dmY" will work for both `01-12-2022` and `01/12/2022`). </br> `lubridate` can even parse more than one date/time format within a dataframe, so if your data include multiple formats, make sure they are all included. Here, we've included some common combinations --- modify if your data include a different format
 
 ```{r}
 date_formats <- c("dmY", "Ymd") #specify date formats 
@@ -243,7 +242,6 @@ Finally, data need an ID column, either be the tag ID ("TagID") or individual ID
 ```{r}
 ID_type <- "ID"
 ```
-
 :::
 
 #### Read in and merge all tracking data files {.tabset}
@@ -297,15 +295,14 @@ df_combined
 :::
 
 #### Slim down dataset {.tabset}
-::: panel-tabset
 
+::: panel-tabset
 ##### Select normal columns
 
 ::: {.callout-warning icon="false"}
 #### 🧠 User input required
 
-First, data need a time stamp, either in separate columns (e.g., "Date" and "Time") or combined ("DateTime"). Below we specify which column's date and time info are stored in the data. </br>
-***NB:*** *These have to be in the same order as specified in earlier user input, i.e. "Date" and "Time" have to be the right way round*
+First, data need a time stamp, either in separate columns (e.g., "Date" and "Time") or combined ("DateTime"). Below we specify which column's date and time info are stored in the data. </br> ***NB:*** *These have to be in the same order as specified in earlier user input, i.e. "Date" and "Time" have to be the right way round*
 
 ```{r}
 datetime_formats # previously specified datetime formats
@@ -347,7 +344,6 @@ df_slim <- data.frame(ID = df_combined$ID,
                       Immersion = df_combined$`wets0-20`)
 ```
 :::
-
 :::
 
 #### Parse dates, create datetime, date and year columns
@@ -376,8 +372,8 @@ df_slim <- df_slim %>%
 Fails <- df_slim %>% filter(is.na(DateTime)==T)
 head(Fails)
 ```
-Now we can see the issue: `Date` is empty, and `Time` is saved as a number. We'll remove this row in the @cleaning section, so don't need to do anything else for the moment.
 
+Now we can see the issue: `Date` is empty, and `Time` is saved as a number. We'll remove this row in the @cleaning section, so don't need to do anything else for the moment.
 :::
 
 Lastly, we make a `df_raw` dataframe by sorting using ID and DateTime, dropping NA's in DateTime column
@@ -431,15 +427,13 @@ First we define the path to our metadata file:
 filepath_meta <- here("Data","RFB_Metadata.csv")
 ```
 
-Then much like in Step 1, we define the date format(s) used (for passing to [`lubridate`](https://lubridate.tidyverse.org/reference/lubridate-package.html)) (`d` = day as decimal, `m` = month as decimal, `y` = year without century - 2 digits, `Y` = year with century - 4 digits).
-Here, we've included common combinations, which you'll need to modify if your metadata include a different format (run `OlsonNames()` to return a full list of time zones names).
+Then much like in Step 1, we define the date format(s) used (for passing to [`lubridate`](https://lubridate.tidyverse.org/reference/lubridate-package.html)) (`d` = day as decimal, `m` = month as decimal, `y` = year without century - 2 digits, `Y` = year with century - 4 digits). Here, we've included common combinations, which you'll need to modify if your metadata include a different format (run `OlsonNames()` to return a full list of time zones names).
 
 ```{r}
 metadate_formats <- c("dmY", "Ymd") #specify date format used in metadata
 metadatetime_formats <- c("dmY HMS", "Ymd HMS") #specify date & time format
 metadatatimezone <- "Indian/Chagos" #specify timezone used for metadata
 ```
-
 :::
 
 Next we read in the metadata file (make sure to check the `read_` function you're using matches your data format!).
@@ -449,12 +443,13 @@ Next we read in the metadata file (make sure to check the `read_` function you'r
 df_metadata <- readr::read_csv(filepath_meta) # Read in metadata file
 names(df_metadata)
 ```
+
 ##### Select metadata columns
 
 ::: {.callout-warning icon="false"}
 #### 🧠 User input required
 
-Then we select necessary columns & create a new complete dataframe, making sure to provide four compulsory columns: **ID**  --- as defined in tracking data (individual **ID** or **TagID**), **deployment date** & **deployment time**. We can also provide optional columns depending on sensor type: e.g. colony, sex, age. You can add or delete other columns where appropriate.
+Then we select necessary columns & create a new complete dataframe, making sure to provide four compulsory columns: **ID** --- as defined in tracking data (individual **ID** or **TagID**), **deployment date** & **deployment time**. We can also provide optional columns depending on sensor type: e.g. colony, sex, age. You can add or delete other columns where appropriate.
 
 If you have multiple ID columns like TagID/DeployID, include them here (for example, if one individual was tracked over multiple deployments/years, or if one tag was re-deployed on multiple individuals). For more information and helpful code, see the [FAQ document](FAQ's.html) and [troubleshooting script](https://github.com/ExMove/ExMove/blob/main/R/Troubleshoot_Multiple%20ID%20columns.R).
 
@@ -479,10 +474,10 @@ df_metadataslim <- data.frame(ID = as.character(df_metadata$BirdID), # compulsor
 ```
 
 ::: {.callout-note collapse="true"}
-
 ## Option: select alternative columns
 
 For the example dataset RFB_IMM (immature red-footed boobies), we can use the following:
+
 ```{r}
 #| eval: false
 df_metadataslim <- data.frame(ID = as.character(df_metadata$bird_id), # compulsory column
@@ -498,7 +493,6 @@ df_metadataslim <- data.frame(ID = as.character(df_metadata$bird_id), # compulso
                                Age = df_metadata$age)
 ```
 :::
-
 :::
 
 Format all dates and times, combine them and specify timezone (NA's in deployment/retrieval date times will throw warnings, but these are safe to ignore if you know there are NA's in these columns).
@@ -577,7 +571,6 @@ Define a vector of columns which can't have `NA`s (if there are `NA`s in one of 
 ```{r}
 na_cols <- c("X", "Y", "DateTime", "ID")
 ```
-
 :::
 
 Now we pipe the data through a series of functions to drop `NA`s in specified columns, filter out user-defined `no_data_values` in `Lat` `Lon` columns, remove duplicates, remove undeployed locations and filter out locations within temporal cut-off following deployment.
@@ -596,11 +589,9 @@ head(df_clean)
 ```
 
 ::: {.callout-note collapse="true"}
-
 ## Option: Filter by fix quality
 
-Argos fix quality can be used to filter the data set to remove locations with too much uncertainty. If you know the error classes that you want to retain in a dataset, you can run this filter below. </br>
-***NB:*** *If you want to do further exploration of location quality (e.g., from GPS PTT tags to compare locations with contemporaneous GPS locations), keep all location classes by skipping this step.*
+Argos fix quality can be used to filter the data set to remove locations with too much uncertainty. If you know the error classes that you want to retain in a dataset, you can run this filter below. </br> ***NB:*** *If you want to do further exploration of location quality (e.g., from GPS PTT tags to compare locations with contemporaneous GPS locations), keep all location classes by skipping this step.*
 
 In this example we define a vector of location classes to keep (typically, location classes 1, 2, and 3 are of sufficient certainty), and filter out everything else.
 
@@ -611,9 +602,7 @@ lc_keep <- c("1", "2", "3")
 df_clean <- df_clean %>%
 filter(lc %in% lc_keep) # filter data to retain only the best lc classes
 ```
-
 :::
-
 
 Finally we remove intermediate files/objects:
 
@@ -637,7 +626,7 @@ meta_crs <- 4326 # Only change if data are in a different coordinate system
 
 Next we transform coordinates of data, and perform spatial calculations. This requires spatial analysis, and so it is good practice to run all spatial analyses in a coordinate reference system that uses metres as a unit.
 
-The default CRS for this workflow is the [Spherical Mercator projection](https://epsg.io/3857) — (`crs = 3857`), which is used by Google Maps/OpenStreetMap and works worldwide. However, this CRS can over-estimate distance calculations in some cases, so it's important to consider the location and scale of your data (e.g., equatorial/polar/local scale/global scale) and choose a projection system to match. Other options include (but are not limited to) UTM, and Lambert Azimuthal Equal-Area (LAEA) projections.
+The default CRS for this workflow is the [Spherical Mercator projection](https://epsg.io/3857) --- (`crs = 3857`), which is used by Google Maps/OpenStreetMap and works worldwide. However, this CRS can over-estimate distance calculations in some cases, so it's important to consider the location and scale of your data (e.g., equatorial/polar/local scale/global scale) and choose a projection system to match. Other options include (but are not limited to) UTM, and Lambert Azimuthal Equal-Area (LAEA) projections.
 
 ```{r}
 transform_crs <- 3857
@@ -670,7 +659,8 @@ df_diagnostic <-  df_clean %>%
   select(-c(geometry_GPS, dX, dY)) # ungroup and remove excess geometries
 ```
 
-Add latitude and longitude column — this can be useful for plotting and is a common coordinate system used in the shiny app
+Add latitude and longitude column --- this can be useful for plotting and is a common coordinate system used in the shiny app
+
 ```{r}
 df_diagnostic <- st_coordinates(st_transform(st_as_sf(df_diagnostic, 
                                                       coords = c("X","Y"), 
@@ -689,6 +679,7 @@ Here we're going to save `df_diagnostic` to use in the Shiny app provided. The a
 #### 🧠 User input required
 
 First, we use [here](https://here.r-lib.org/) to create a file path for saving the working dataframe files, and create the folder if missing
+
 ```{r}
 #| eval: false
 filepath_dfout <- here("DataOutputs","WorkingDataFrames") # create filepath
@@ -696,17 +687,18 @@ dir.create(filepath_dfout) # create folder if it doesn't exist
 ```
 
 Next we define file name for the saved file by pasting the species code before `_diagnostic` (can change this if you want to use a different naming system).
+
 ```{r}
 filename_dfout <- paste0(species_code, "_diagnostic")
 ```
 
 If not added from the metadata, add a species column and any other columns here relevant to your data *(optional)*
+
 ```{r}
 #| eval: false
 ## ** Option ** ##
 df_diagnostic$Species <- species_code
 ```
-
 :::
 
 Finally we save the `df_diagnostic` as a csv file using the variables created above.
@@ -722,7 +714,6 @@ Remove everything except `df_diagnostic` ahead of the next step.
 rm(list=ls()[!ls() %in% c("df_diagnostic", "species_code")]) #specify objects to keep
 ```
 
-
 ## 6. Filtering {#filtering}
 
 This second filtering stage is designed to remove outliers in the data, and you can use outputs from the Shiny app to inform these choices. If you don't need to filter for outliers, skip this step and keep using `df_diagnostic` in the next steps.
@@ -730,11 +721,14 @@ This second filtering stage is designed to remove outliers in the data, and you 
 ### Accessing the Shiny app {#shiny-app}
 
 #### Option 1:
-Access the Shiny app online at the following link: [https://lukeozsanlav.shinyapps.io/exmove_explorer/](https://lukeozsanlav.shinyapps.io/exmove_explorer/)
+
+Access the Shiny app online at the following link: <https://lukeozsanlav.shinyapps.io/exmove_explorer/>
 
 #### Option 2:
+
 Alternatively run the app from your local R session with the following code
-``` {r}
+
+```{r}
 #| eval: false
 if (!require("shiny")) install.packages("shiny")
 library(shiny)
@@ -743,8 +737,9 @@ runGitHub("ExMoveApp", username = "LukeOzsanlav",
 ```
 
 #### App usage:
-- Upload your csv version of `df_diagnostic` to the app by clicking the `Upload data` button in the top left. 
-- At the bottom of each app page are printed code chunks that can be copied into subsequent user input section. These code chunks contain the user input values you manually select in the app
+
+-   Upload your csv version of `df_diagnostic` to the app by clicking the `Upload data` button in the top left.
+-   At the bottom of each app page are printed code chunks that can be copied into subsequent user input section. These code chunks contain the user input values you manually select in the app
 
 #### Define threshold values
 
@@ -755,19 +750,19 @@ For this section, you can either use the code chunks produced by the Shiny app, 
 
 First we define a period to filter after tag deployment, when all points before the cutoff will be removed (e.g. to remove potentially unnatural behaviour following the tagging event). We define this period using the `as.period` function, by providing an integer value and time unit (e.g. hours/days/years). This code below specifies a period of 30 minutes:
 
-``` {r}
+```{r}
 filter_cutoff <- as.period(30, unit="minutes") 
 ```
 
 Then we define speed threshold in m/s, which we will use to remove any points with faster speeds.
 
-``` {r}
+```{r}
 filter_speed <- 20
 ```
 
 Next we define a net displacement (distance from first point) threshold and specify units. Any points further away from the first tracking point will be removed (see commented code for how to retain all points):
 
-``` {r}
+```{r}
 filter_netdisp_dist <- 300
 filter_netdist_units <- "km" # e.g., "m", "km"
 
@@ -775,18 +770,19 @@ filter_netdist_units <- "km" # e.g., "m", "km"
 #filter_netdisp_dist <- max(df_diagnostic$netdisp)
 #filter_netdist_units <- "m"
 ```
-
 :::
 
 ##### Implement filters
 
 Create net displacement filter using distance and units
-``` {r}
+
+```{r}
 filter_netdisp <- units::as_units(filter_netdisp_dist, filter_netdist_units)
 ```
 
 Filter df_diagnostic
-``` {r}
+
+```{r}
 df_filtered <- df_diagnostic %>%
   filter(Deploydatetime + filter_cutoff < DateTime, # keep times after cutoff
          speed < filter_speed, # keep speeds slower than speed filter
@@ -795,10 +791,10 @@ head(df_filtered)
 ```
 
 Remove intermediate files/objects
-``` {r}
+
+```{r}
 rm(list=ls()[!ls() %in% c("df_filtered", "species_code")]) #specify objects to keep
 ```
-
 
 ## 7. Summarise cleaned & filtered tracking data {#summarise-data}
 
@@ -824,17 +820,18 @@ Secondly, down to individual level (add `DeployID` for example if relevant).
 ```{r}
 grouping_factors_indlevel <- c("ID")
 ```
-
 :::
 
 ##### Create summary tables
 
 Create a small function to calculate standard error.
+
 ```{r}
 se <- function(x) sqrt(var(x, na.rm = T) / length(x[!is.na(x)]))
 ```
 
 Create a summary table of individual-level summary statistics:
+
 ```{r}
 df_summary_ind <- df_filtered %>%
   group_by(across(c(all_of(grouping_factors_poplevel), all_of(grouping_factors_indlevel)))) %>%
@@ -848,6 +845,7 @@ df_summary_ind
 ```
 
 Create a table of population-level summary statistics:
+
 ```{r}
 #| warning: false
 df_summary_pop <- df_summary_ind %>% # use the individual-level summary data
@@ -865,14 +863,13 @@ df_summary_pop <- df_summary_ind %>% # use the individual-level summary data
 df_summary_pop
 ```
 
-
 Remove intermediate files/objects by specifying which objects to keep:
+
 ```{r}
 rm(list=ls()[!ls() %in% c("df_filtered",
                           "df_summary_ind", "df_summary_pop", 
                           "species_code")]) 
 ```
-
 
 ## 8. Save filtered and summary data {#save-data}
 
@@ -880,6 +877,7 @@ rm(list=ls()[!ls() %in% c("df_filtered",
 #### 🧠 User input required
 
 First we define the folder file path for saving our filtered data and create folder if not already present
+
 ```{r}
 #| eval: false
 filepath_filtered_out <- here("DataOutputs","WorkingDataFrames")
@@ -887,6 +885,7 @@ dir.create(filepath_filtered_out)
 ```
 
 Then we define the file path for saving summary dataframes, again creating folder if needed
+
 ```{r}
 #| eval: false
 filepath_summary_out <- here("DataOutputs","SummaryDataFrames")
@@ -894,16 +893,17 @@ dir.create(filepath_summary_out)
 ```
 
 Here we define file names for saved files, and paste the species code to `_summary_`, followed by `ind` (individual level) or `pop` (population level). You can change this if you want to use a different naming system.
+
 ```{r}
 #| eval: false
 filename_filtered_out <- paste0(species_code, "_filtered")
 filename_summary_ind_out <- paste0(species_code, "_summary_ind")
 filename_summary_pop_out <- paste0(species_code, "_summary_pop")
 ```
-
 :::
 
 Now we can save all our dataframes as .csv files using our defined values
+
 ```{r}
 #| eval: false
 write_csv(df_filtered, file = here(filepath_filtered_out, paste0(filename_filtered_out,".csv")))
@@ -912,12 +912,12 @@ write_csv(df_summary_pop, file = here(filepath_summary_out, paste0(filename_summ
 ```
 
 Lastly we remove intermediate files/objects
+
 ```{r}
 rm(list=ls()[!ls() %in% c("df_filtered", 
                           "df_summary_ind", "df_summary_pop", 
                           "species_code")])
 ```
-
 
 ## 9. Visualisation
 
@@ -951,16 +951,17 @@ dir.create(out_path)
 ```
 
 We plot maps over a topography base-layer which can include terrestrial (elevation) and marine (bathymetry/water depth) data. To set legend label for topography data, relevant to your data.
+
 ```{r}
 topo_label = "Depth (m)"
 ```
-
 :::
 
 Load additional libraries for spatial visualisation **(optional)**
 
 ::: {.callout-note icon="true"}
 #### If you see a `masking` warning these are fine. Watch out for packages that aren't installed yet
+
 ```{r}
 #| output: false
 library(rnaturalearth)
@@ -983,15 +984,13 @@ df_plotting <- df_filtered %>%
 
 Create a map of all points. Set the plot limits as the max and min lat/longs as the tracking data
 
-First set up a basemap to plot over:
--   Use `rnaturalearth` low resolution countries basemap
--   co-ordinates in lat/lon to match other spatial data
+First set up a basemap to plot over: - Use `rnaturalearth` low resolution countries basemap - co-ordinates in lat/lon to match other spatial data
 
 ```{r}
 countries <- ne_countries(scale = "medium", returnclass = "sf")
 ```
 
-Define min and max co-ordinates based on extent of tracking data, for adding bathymetry extracted from NOAA database. 
+Define min and max co-ordinates based on extent of tracking data, for adding bathymetry extracted from NOAA database.
 
 ```{r}
 minlon <- min(df_plotting$Lon)
@@ -1042,7 +1041,6 @@ map_base
 ```
 
 ::: panel-tabset
-
 ##### Population
 
 Plot a combined map of all tracking locations:
@@ -1109,17 +1107,18 @@ map_individuals <- map_base +
 ```
 
 How many pages of plots?
+
 ```{r}
 #| eval: false
 n_pages(map_individuals)
 ```
- 
+
 Run through different values of page to show each page in turn
+
 ```{r}
 #| eval: false
 map_individuals
 ```
-
 :::
 
 Save maps for further use using `ggsave` function.
@@ -1141,7 +1140,7 @@ ggsave(plot = map_individuals,
 )
 ```
 
-Create a time series plot of speed, faceted for each individual. 
+Create a time series plot of speed, faceted for each individual.
 
 ```{r}
 speed_time_plot <- df_plotting %>% #speed over time
@@ -1159,9 +1158,7 @@ speed_time_plot
 ```
 
 ::: {.callout-note icon="true"}
-
 Warnings about `non-finite` values for speed/step length plots are expected and usually refer to the first location for each individual (i.e. number of non-finite values should be equal to number of individuals)
-
 :::
 
 Save plot for further use
@@ -1261,6 +1258,7 @@ ggsave(plot = step_hist,
 ```
 
 Lastly, we remove intermediate files/objects if necessary to speed up any post-processing steps
+
 ```{r}
 rm(list=ls()[!ls() %in% c("species_code")]) #specify objects to keep
 ```

@@ -24,6 +24,7 @@ citations-hover: false
 Welcome to the home page of ExMove. Here, you can find the resources to use our toolkit for processing biologging data from tag downloads to online archive.
 
 Below is an overview of the workflow and what you can do with it:
+
 ```{mermaid}
 %%| fig-width: 9
 %%| eval: true

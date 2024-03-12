@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ExMove</title>
+<title>ExMove – worked_example</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,9 +58,6 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -84,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -100,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">FAQ’s</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Worked_example.html" rel="" target="">
+    <a class="nav-link active" href="./Worked_example.html" rel="" target="" aria-current="page">
  <span class="menu-text">Example</span></a>
   </li>  
 </ul>
@@ -118,68 +115,20 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 
-<div class="grid">
-<div class="g-col-12 g-col-md-3">
-<p><img src="images/ExMove_hex_sticker.png" class="img-fluid"></p>
-</div>
-<section id="exmove-an-open-source-toolkit-for-processing-and-exploring-animal-tracking-data-in-r" class="level2 g-col-12 g-col-md-9">
-<h2 class="anchored" data-anchor-id="exmove-an-open-source-toolkit-for-processing-and-exploring-animal-tracking-data-in-r">ExMove: An open-source toolkit for processing and exploring animal tracking data in R</h2>
-<section id="liam-langley-stephen-lang-luke-ozsanlav-harris-alice-trevail" class="level4">
-<h4 class="anchored" data-anchor-id="liam-langley-stephen-lang-luke-ozsanlav-harris-alice-trevail">Liam Langley, Stephen Lang, Luke Ozsanlav-Harris, &amp; Alice Trevail</h4>
-</section>
-</section>
-</div>
-<p>&nbsp;</p>
-<p>Welcome to the home page of ExMove. Here, you can find the resources to use our toolkit for processing biologging data from tag downloads to online archive.</p>
-<p>Below is an overview of the workflow and what you can do with it:</p>
-<div class="cell" data-fig-width="9" data-eval="true">
-<div class="cell-output-display">
-<div>
-<div>
-<pre class="mermaid mermaid-js">%%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing': 30}}}%%
-flowchart LR
-  S1[Read in data] ==&gt; S3(Merge)
-  S2[Read in metadata] ==&gt; S3 ==&gt; A(Clean)
-  subgraph shiny ["(Parameter determination in Shiny app)"]
-  style shiny fill:#fbfbfb, stroke:#d3d3d3, stroke-width:px
-  A(Clean) ==&gt; B(Process) ==&gt; C(Filter)
-  D(Optional&lt;br/&gt;scripts)
-  end
-  C ==&gt; S{Standardised&lt;br/&gt;dataset}
-  C --&gt; D --&gt; S
-  S --&gt; E(Analyses)
-  S ==&gt; F(Archive)
-  linkStyle 6,7 stroke-dasharray: 4 4
-</pre>
-</div>
-</div>
-</div>
-</div>
-<section id="some-links" class="level5">
-<h5 class="anchored" data-anchor-id="some-links">Some links:</h5>
-<ul>
-<li><a href="https://www.biorxiv.org/content/10.1101/2023.05.16.540922v1">Read the manuscript, via BioRXiv</a> (currently in review at Journal of Animal Ecology)</li>
-<li><a href="https://github.com/ExMove/ExMove">Access the GitHub repository</a> containing the code and documentation to run the toolkit</li>
-</ul>
-<p>&nbsp;</p>
-</section>
-<section id="how-to-cite" class="level5">
-<h5 class="anchored" data-anchor-id="how-to-cite">How to cite:</h5>
-<p><span class="citation" data-cites="langley2023">Langley, L. P., Lang, S., Ozsanlav-Harris, L., &amp; Trevail, A. (2023). <em>ExMove: An open-source toolkit for processing and exploring animal tracking data in r</em>. <a href="http://dx.doi.org/10.1101/2023.05.16.540922" role="doc-biblioref">http://dx.doi.org/10.1101/2023.05.16.540922</a></span></p>
+<p><img src="images/Worked_example_figure.jpg" class="img-fluid" style="width:100.0%"></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -376,6 +325,43 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           }
         });
       }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
 });
 </script>
 </div> <!-- /content -->

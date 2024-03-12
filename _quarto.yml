@@ -12,6 +12,8 @@ website:
         text: User guide
       - href: Glossary.qmd
       - href: FAQs.qmd
+      - href: Worked_example.qmd
+        text: Example
 
     right: 
       - icon: github

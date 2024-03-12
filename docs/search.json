@@ -257,5 +257,12 @@
     "title": "Glossary",
     "section": "",
     "text": "units_df_datetime – this parameter specifies the units of the time difference column that will be created in the data. Due to earlier filtering the duration between successive locations is recalculated again in this script.\nthreshold_time – this parameter defines the threshold time value above which gaps in the data are split and labelled as separate segments. Therefore if the difftime column in the data set exceeds this duration then the track will be split at that point.\nthreshold_points – this parameter is a numerical value which defines the minimum number of data points required for a valid segment. If a segment is below this threshold then all the locations contained within it are removed from the data set. These small segments are often not of use for further analysis that requires segmented data with consistent sampling intervals, e.g. hidden markov models."
+  },
+  {
+    "objectID": "Worked_example.html",
+    "href": "Worked_example.html",
+    "title": "ExMove",
+    "section": "",
+    "text": "!"
   }
 ]
